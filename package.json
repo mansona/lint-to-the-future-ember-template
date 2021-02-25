@@ -1,6 +1,6 @@
 {
   "name": "lint-to-the-future-ember-template",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "@authmaker/generator-express:version": "3.2.6",
   "scripts": {
     "lint": "eslint .",
