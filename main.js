@@ -9,6 +9,11 @@ function ignoreError(errors, file, filePath) {
 
   let uniqueIds = [...new Set(ruleIds)];
 
+  if (!uniqueIds.length) {
+    // no errors to ignore
+    return;
+  }
+
   const firstLine = file.split('\n')[0];
 
   if (firstLine.includes('template-lint-disable')) {
