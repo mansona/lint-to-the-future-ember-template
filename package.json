@@ -1,7 +1,7 @@
 {
   "name": "lint-to-the-future-ember-template",
   "version": "0.1.1",
-  "@authmaker/generator-express:version": "3.2.6",
+  "repository": "https://github.com/mansona/lint-to-the-future-ember-template",
   "scripts": {
     "lint": "eslint .",
     "release": "release-it",
@@ -26,5 +26,6 @@
   },
   "engines": {
     "node": "10.* || >= 12.*"
-  }
+  },
+  "@authmaker/generator-express:version": "3.2.6"
 }
