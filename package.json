@@ -4,6 +4,7 @@
   "@authmaker/generator-express:version": "3.2.6",
   "scripts": {
     "lint": "eslint .",
+    "release": "release-it",
     "test": "mocha --recursive --reporter spec",
     "test-watch": "npm run test -- -w --reporter min"
   },
@@ -13,10 +14,12 @@
     "walk-sync": "^2.2.0"
   },
   "devDependencies": {
+    "auto-changelog": "github:mansona/auto-changelog#epic",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "release-it": "^14.4.1"
   },
   "peerDependencies": {
     "ember-template-lint": "^2.0.0"
