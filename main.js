@@ -41,7 +41,7 @@ export function ignoreAll() {
       encoding: 'utf8',
     });
 
-    const results = linter.verify({ source: template, moduleId: 'template.hbs' });
+    const results = linter.verify({ source: template, filePath: fileName });
     ignoreError(results, template, fileName);
   });
 }

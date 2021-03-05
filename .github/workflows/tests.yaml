@@ -30,6 +30,5 @@ jobs:
     - run: npm i -g npm@7
     - run: npm ci
     - run: npm run lint
-    - run: npm run test
       env:
         CI: true
