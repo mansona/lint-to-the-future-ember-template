@@ -36,12 +36,18 @@ export function ignoreAll() {
   const TemplateLinter = importCwd('ember-template-lint');
   const linter = new TemplateLinter();
 
-  files.forEach((fileName) => {
+  files.forEach(async (fileName) => {
     const template = readFileSync(fileName, {
       encoding: 'utf8',
     });
 
-    const results = linter.verify({ source: template, filePath: fileName });
+    let results = linter.verify({ source: template, filePath: fileName });
+
+    // support ember-template-lint 2.x and 3.x
+    if (results.then) {
+      results = await results;
+    }
+
     ignoreError(results, template, fileName);
   });
 }
