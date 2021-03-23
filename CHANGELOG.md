@@ -1,3 +1,7 @@
+v0.2.1 / 2021-03-23
+==================
+* set correct peerDependencies for ember-template-lint #3 from @mansona
+
 v0.2.0 / 2021-03-05
 ==================
 * support ember-template-lint v2.x and v3.x #2 from @mansona
