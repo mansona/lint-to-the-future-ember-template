@@ -24,9 +24,9 @@ function ignoreError(errors, file, filePath) {
 
     uniqueIds = [...new Set([...ruleIds, ...existing])];
 
-    writeFileSync(filePath, file.replace(/^.*\n/, `{{!-- template-lint-disable ${uniqueIds.join(' ')} --}}\n`));
+    writeFileSync(filePath, file.replace(/^.*\n/, `{{! template-lint-disable ${uniqueIds.join(' ')} }}\n`));
   } else {
-    writeFileSync(filePath, `{{!-- template-lint-disable ${uniqueIds.join(' ')} --}}\n${file}`);
+    writeFileSync(filePath, `{{! template-lint-disable ${uniqueIds.join(' ')} }}\n${file}`);
   }
 }
 
