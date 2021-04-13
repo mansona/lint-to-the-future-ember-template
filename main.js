@@ -31,7 +31,7 @@ function ignoreError(errors, file, filePath) {
 }
 
 export function ignoreAll() {
-  const files = walkSync(process.cwd(), { globs: ['app/**/*.hbs', 'addon/**/*.hbs'] });
+  const files = walkSync(process.cwd(), { globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'] });
 
   const TemplateLinter = importCwd('ember-template-lint');
   const linter = new TemplateLinter();
@@ -54,7 +54,7 @@ export function ignoreAll() {
 
 export function list() {
   const files = walkSync(process.cwd(), {
-    globs: ['app/**/*.hbs', 'addon/**/*.hbs'],
+    globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'],
   });
 
   const output = {};
