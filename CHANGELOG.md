@@ -1,3 +1,7 @@
+v0.3.1 / 2021-04-13
+==================
+* [bugfix] also run against tests folder #5 from @mansona
+
 v0.3.0 / 2021-03-23
 ==================
 * add file comments in a prettier-compliant way #4 from @mansona
