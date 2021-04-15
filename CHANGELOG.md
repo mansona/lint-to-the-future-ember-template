@@ -1,3 +1,7 @@
+v0.3.2 / 2021-04-15
+==================
+* [BUGFIX] Fix error when trying to list with {{!-- --}} style ignore comments #6 from @mansona
+
 v0.3.1 / 2021-04-13
 ==================
 * [bugfix] also run against tests folder #5 from @mansona
