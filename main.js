@@ -71,7 +71,8 @@ export function list(directory) {
       return;
     }
 
-    const matched = firstLine.match(/template-lint-disable(.*) --\}\}/);
+    const matched = firstLine.match(/template-lint-disable(.*) (--)?\}\}/);
+
     const ignoreRules = matched[1].split(' ')
       .map(item => item.trim())
       .filter(item => item.length);
