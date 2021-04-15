@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint .",
     "release": "release-it",
-    "test": "mocha --recursive --reporter spec",
+    "test": "mocha --recursive --reporter spec --require esm",
     "test-watch": "npm run test -- -w --reporter min"
   },
   "dependencies": {
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "auto-changelog": "github:mansona/auto-changelog#epic",
+    "chai": "^4.3.4",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.8.0",

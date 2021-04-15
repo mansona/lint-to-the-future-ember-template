@@ -1,6 +1,7 @@
-const { readFileSync, writeFileSync } = require('fs');
-const importCwd = require('import-cwd');
-const walkSync = require('walk-sync');
+import { readFileSync, writeFileSync } from 'fs';
+import importCwd from 'import-cwd';
+import walkSync from 'walk-sync';
+import { join } from 'path';
 
 function ignoreError(errors, file, filePath) {
   const ruleIds = errors
@@ -52,21 +53,26 @@ export function ignoreAll() {
   });
 }
 
-export function list() {
-  const files = walkSync(process.cwd(), {
+export function list(directory) {
+  // this is only used for internal testing, lint-to-the-future never passes a
+  // directory
+  const cwd = directory || process.cwd();
+
+  const files = walkSync(cwd, {
     globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'],
   });
 
   const output = {};
 
   files.forEach((filePath) => {
-    const file = readFileSync(filePath, 'utf8');
+    const file = readFileSync(join(cwd, filePath), 'utf8');
     const firstLine = file.split('\n')[0];
     if (!firstLine.includes('template-lint-disable')) {
       return;
     }
 
-    const matched = firstLine.match(/template-lint-disable(.*) --\}\}/);
+    const matched = firstLine.match(/template-lint-disable(.*) (--)?\}\}/);
+
     const ignoreRules = matched[1].split(' ')
       .map(item => item.trim())
       .filter(item => item.length);
