@@ -1,3 +1,7 @@
+v0.3.3 / 2021-06-02
+==================
+* Fix issue caused by no gaps in comments #7 from @mansona
+
 v0.3.2 / 2021-04-15
 ==================
 * [BUGFIX] Fix error when trying to list with {{!-- --}} style ignore comments #6 from @mansona
