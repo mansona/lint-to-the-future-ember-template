@@ -71,10 +71,12 @@ export function list(directory) {
       return;
     }
 
-    const matched = firstLine.match(/template-lint-disable(.*) (--)?\}\}/);
+    const matched = firstLine.match(/template-lint-disable(.*)(--)?\}\}/);
 
     const ignoreRules = matched[1].split(' ')
       .map(item => item.trim())
+      // remove trailing -- from when there is no gaps in comments
+      .map(item => item.replace(/--$/, ''))
       .filter(item => item.length);
 
     ignoreRules.forEach((rule) => {
