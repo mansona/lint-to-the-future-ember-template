@@ -33,7 +33,11 @@ describe('list function', function () {
         'app/templates/author.hbs',
         'tests/dummy/app/templates/application.hbs',
       ],
-      'no-log': ['app/templates/error.hbs'],
+      'no-log': [
+        'addon/templates/components/notification-thingy.hbs',
+        'addon/templates/components/notification-yoke.hbs',
+        'app/templates/error.hbs',
+      ],
       'no-unbalanced-curlies': ['tests/dummy/app/templates/application.hbs'],
       'require-button-type': ['tests/dummy/app/templates/application.hbs'],
       'require-input-label': ['tests/dummy/app/templates/application.hbs'],
