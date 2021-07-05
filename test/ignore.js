@@ -10,6 +10,7 @@ describe.only('list function', function () {
     fixturify.writeSync(tmpobj.name, {
       app: {
         'log.hbs': '{{log "hello"}}',
+        'existing.hbs': '{{! template-lint-disable no-log }}\n{{log "hello"}}{{debugger}}',
       },
     });
 
@@ -20,6 +21,7 @@ describe.only('list function', function () {
     expect(result).to.deep.equal({
       app: {
         'log.hbs': '{{! template-lint-disable no-log }}\n{{log "hello"}}',
+        'existing.hbs': '{{! template-lint-disable no-debugger no-log }}\n{{log "hello"}}{{debugger}}',
       },
     });
   });

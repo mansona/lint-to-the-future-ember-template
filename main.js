@@ -18,7 +18,7 @@ function ignoreError(errors, file, filePath) {
   const firstLine = file.split('\n')[0];
 
   if (firstLine.includes('template-lint-disable')) {
-    const matched = firstLine.match(/template-lint-disable(.*) --\}\}/);
+    const matched = firstLine.match(/template-lint-disable(.*)(--)?\}\}/);
     const existing = matched[1].split(' ')
       .map(item => item.trim())
       .filter(item => item.length);
