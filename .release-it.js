@@ -1,6 +1,7 @@
 module.exports = {
   git: {
     changelog: 'npx auto-changelog --template changelog.template --unreleased-only --stdout --load-github-issue-data --github-cache-dir .changelog',
+    requireCommits: true
   },
   hooks: {
     'after:bump': 'npx auto-changelog --template changelog.template --unreleased-only --prepend --load-github-issue-data --github-cache-dir .changelog --package',
