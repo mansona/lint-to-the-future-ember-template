@@ -1,3 +1,7 @@
+v0.3.5 / 2021-07-05
+==================
+* Fix updating existing ignore line #8 from @mansona
+
 v0.3.4 / 2021-07-05
 ==================
 
