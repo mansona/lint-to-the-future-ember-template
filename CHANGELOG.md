@@ -1,3 +1,6 @@
+v0.3.4 / 2021-07-05
+==================
+
 v0.3.3 / 2021-06-02
 ==================
 * Fix issue caused by no gaps in comments #7 from @mansona
