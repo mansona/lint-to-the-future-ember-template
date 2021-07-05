@@ -18,7 +18,7 @@ function ignoreError(errors, file, filePath) {
   const firstLine = file.split('\n')[0];
 
   if (firstLine.includes('template-lint-disable')) {
-    const matched = firstLine.match(/template-lint-disable(.*) --\}\}/);
+    const matched = firstLine.match(/template-lint-disable(.*)(--)?\}\}/);
     const existing = matched[1].split(' ')
       .map(item => item.trim())
       .filter(item => item.length);
@@ -31,14 +31,15 @@ function ignoreError(errors, file, filePath) {
   }
 }
 
-export function ignoreAll() {
-  const files = walkSync(process.cwd(), { globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'] });
+// only passing the cwd in for testing purposes
+export function ignoreAll(cwd = process.cwd()) {
+  const files = walkSync(cwd, { globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'] });
 
   const TemplateLinter = importCwd('ember-template-lint');
   const linter = new TemplateLinter();
 
   files.forEach(async (fileName) => {
-    const template = readFileSync(fileName, {
+    const template = readFileSync(join(cwd, fileName), {
       encoding: 'utf8',
     });
 
@@ -49,7 +50,7 @@ export function ignoreAll() {
       results = await results;
     }
 
-    ignoreError(results, template, fileName);
+    ignoreError(results, template, join(cwd, fileName));
   });
 }
 
