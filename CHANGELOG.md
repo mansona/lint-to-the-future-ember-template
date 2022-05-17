@@ -1,3 +1,8 @@
+v1.0.0 / 2022-05-17
+==================
+* add matrix test for all ember-template-lint versions and fix ESM issue with ember-template-lint@4 #11 from @mansona
+* breaking: drop support for node &lt; 14 and fix CI #10 from @mansona
+
 v0.3.5 / 2021-07-05
 ==================
 * Fix updating existing ignore line #8 from @mansona
