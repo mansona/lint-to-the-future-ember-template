@@ -5,7 +5,7 @@ import tmp from 'tmp';
 import { ignoreAll } from '..';
 
 describe('ignore function', function () {
-  it('should add file based ignores', function () {
+  it('should add file based ignores', async function () {
     const tmpobj = tmp.dirSync();
     fixturify.writeSync(tmpobj.name, {
       app: {
@@ -14,7 +14,7 @@ describe('ignore function', function () {
       },
     });
 
-    ignoreAll(tmpobj.name);
+    await ignoreAll(tmpobj.name);
 
     const result = fixturify.readSync(tmpobj.name);
 
