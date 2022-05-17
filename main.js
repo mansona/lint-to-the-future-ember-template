@@ -32,13 +32,14 @@ function ignoreError(errors, file, filePath) {
 }
 
 // only passing the cwd in for testing purposes
-export function ignoreAll(cwd = process.cwd()) {
+export async function ignoreAll(cwd = process.cwd()) {
   const files = walkSync(cwd, { globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'] });
 
   const TemplateLinter = importCwd('ember-template-lint');
   const linter = new TemplateLinter();
 
-  files.forEach(async (fileName) => {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const fileName of files) {
     const template = readFileSync(join(cwd, fileName), {
       encoding: 'utf8',
     });
@@ -47,11 +48,12 @@ export function ignoreAll(cwd = process.cwd()) {
 
     // support ember-template-lint 2.x and 3.x
     if (results.then) {
+      // eslint-disable-next-line no-await-in-loop
       results = await results;
     }
 
     ignoreError(results, template, join(cwd, fileName));
-  });
+  }
 }
 
 export function list(directory) {
