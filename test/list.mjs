@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import { list } from '..';
+import { list } from '../main.mjs';
 
 describe('list function', function () {
   it('should output object with rules and files', function () {
-    const result = list(`${__dirname}/fixtures/list`);
+    const result = list('./test/fixtures/list');
     expect(result).to.deep.equal({
       'no-curly-component-invocation': [
         'addon/templates/components/notification-container.hbs',

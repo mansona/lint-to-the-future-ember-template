@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint .",
     "release": "release-it",
-    "test": "mocha --recursive --reporter spec --require esm",
+    "test": "mocha --recursive --reporter spec test/**/*.mjs",
     "test-watch": "npm run test -- -w --reporter min"
   },
   "dependencies": {
@@ -16,16 +16,15 @@
   "devDependencies": {
     "auto-changelog": "github:mansona/auto-changelog#epic",
     "chai": "^4.3.4",
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.8.0",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "fixturify": "^2.1.1",
-    "mocha": "^6.1.4",
+    "mocha": "^10.0.0",
     "release-it": "^14.4.1",
     "tmp": "^0.0.33"
   },
   "peerDependencies": {
-    "ember-template-lint": "^2.0.0 || ^3.0.0"
+    "ember-template-lint": "^2.0.0 || ^3.0.0 || ^4.0.0"
   },
   "engines": {
     "node": "10.* || >= 12.*"
