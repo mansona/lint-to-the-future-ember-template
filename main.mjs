@@ -3,7 +3,9 @@ import importCwd from 'import-cwd';
 import walkSync from 'walk-sync';
 import { join } from 'path';
 
-function ignoreError(errors, file, filePath) {
+function ignoreError(errorInput, file, filePath) {
+  let errors = errorInput.results ?? errorInput;
+
   const ruleIds = errors
     .filter(error => error.severity === 2)
     .map(error => error.rule);
@@ -35,10 +37,16 @@ function ignoreError(errors, file, filePath) {
 export async function ignoreAll(cwd = process.cwd()) {
   const files = walkSync(cwd, { globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'] });
 
-  const TemplateLinter = importCwd('ember-template-lint');
-  const linter = new TemplateLinter();
+  let TemplateLinter;
 
-  // eslint-disable-next-line no-restricted-syntax
+  try {
+    TemplateLinter = await import(join(process.cwd(), 'node_modules', 'ember-template-lint', 'lib', 'index.js'));
+  } catch (err) {
+    console.error({err});
+  }
+
+  const linter = new TemplateLinter.default();
+
   for (const fileName of files) {
     const template = readFileSync(join(cwd, fileName), {
       encoding: 'utf8',
@@ -46,9 +54,9 @@ export async function ignoreAll(cwd = process.cwd()) {
 
     let results = linter.verify({ source: template, filePath: fileName });
 
+
     // support ember-template-lint 2.x and 3.x
     if (results.then) {
-      // eslint-disable-next-line no-await-in-loop
       results = await results;
     }
 

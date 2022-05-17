@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import fixturify from 'fixturify';
 import tmp from 'tmp';
 
-import { ignoreAll } from '..';
+import { ignoreAll } from '../main.mjs';
 
 describe('ignore function', function () {
   it('should add file based ignores', async function () {
