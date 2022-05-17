@@ -4,7 +4,7 @@ import tmp from 'tmp';
 
 import { ignoreAll } from '..';
 
-describe.only('list function', function () {
+describe('ignore function', function () {
   it('should add file based ignores', function () {
     const tmpobj = tmp.dirSync();
     fixturify.writeSync(tmpobj.name, {
