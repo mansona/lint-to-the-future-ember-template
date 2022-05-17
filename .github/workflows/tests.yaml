@@ -23,3 +23,23 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm test
+
+  ember-template-lint-versions:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        template-lint-version: [2, 3, 4]
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: npm
+    - run: npm i -g npm@8
+    - run: npm ci
+    - run: npm install ember-template-lint@${{ matrix.template-lint-version }}
+    - run: npm test
