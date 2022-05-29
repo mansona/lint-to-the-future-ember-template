@@ -52,7 +52,12 @@ export async function ignoreAll(cwd = process.cwd()) {
       encoding: 'utf8',
     });
 
-    let results = linter.verify({ source: template, filePath: fileName });
+    let results = linter.verify({
+      source: template,
+      filePath: fileName,
+      // workaround for https://github.com/ember-template-lint/ember-template-lint/issues/2128
+      moduleId: fileName.replace(/\.[^/\\.]+$/, '')
+    });
 
 
     // support ember-template-lint 2.x and 3.x

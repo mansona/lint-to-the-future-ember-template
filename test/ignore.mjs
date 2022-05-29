@@ -11,6 +11,7 @@ describe('ignore function', function () {
       app: {
         'log.hbs': '{{log "hello"}}',
         'existing.hbs': '{{! template-lint-disable no-log }}\n{{log "hello"}}{{debugger}}',
+        'ignore-me.hbs': '{{log "ignored"}}',
       },
     });
 
@@ -22,6 +23,7 @@ describe('ignore function', function () {
       app: {
         'log.hbs': '{{! template-lint-disable no-log }}\n{{log "hello"}}',
         'existing.hbs': '{{! template-lint-disable no-debugger no-log }}\n{{log "hello"}}{{debugger}}',
+        'ignore-me.hbs': '{{log "ignored"}}',
       },
     });
   });
