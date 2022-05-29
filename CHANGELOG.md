@@ -1,3 +1,7 @@
+v1.0.1 / 2022-05-29
+==================
+* Fix ignore #13 from @jamescdavis
+
 v1.0.0 / 2022-05-17
 ==================
 * add matrix test for all ember-template-lint versions and fix ESM issue with ember-template-lint@4 #11 from @mansona
