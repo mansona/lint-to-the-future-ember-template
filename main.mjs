@@ -35,7 +35,7 @@ function ignoreError(errorInput, file, filePath) {
 
 // only passing the cwd in for testing purposes
 export async function ignoreAll(cwd = process.cwd()) {
-  const files = walkSync(cwd, { globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'] });
+  const files = walkSync(cwd, { globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs', 'lib/**/*.hbs'] });
 
   let TemplateLinter;
 
@@ -75,7 +75,7 @@ export function list(directory) {
   const cwd = directory || process.cwd();
 
   const files = walkSync(cwd, {
-    globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs'],
+    globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs', 'lib/**/*.hbs'],
   });
 
   const output = {};
