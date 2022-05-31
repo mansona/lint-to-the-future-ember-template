@@ -1,3 +1,7 @@
+v1.1.0 / 2022-05-31
+==================
+* Add lib to discovery folders #14 from @locks
+
 v1.0.1 / 2022-05-29
 ==================
 * Fix ignore #13 from @jamescdavis
