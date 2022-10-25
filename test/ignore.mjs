@@ -10,7 +10,7 @@ describe('ignore function', function () {
     fixturify.writeSync(tmpobj.name, {
       app: {
         'log.hbs': '{{log "hello"}}',
-        'existing.hbs': '{{! template-lint-disable no-log }}\n{{log "hello"}}{{debugger}}',
+        'existing.hbs': '{{! template-lint-disable no-debugger }}\n{{log "hello"}}{{debugger}}',
         'ignore-me.hbs': '{{log "ignored"}}',
       },
     });

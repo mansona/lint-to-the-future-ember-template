@@ -26,9 +26,11 @@ function ignoreError(errorInput, file, filePath) {
       .filter(item => item.length);
 
     uniqueIds = [...new Set([...ruleIds, ...existing])];
+    uniqueIds.sort((a, b) => a.localeCompare(b));
 
     writeFileSync(filePath, file.replace(/^.*\n/, `{{! template-lint-disable ${uniqueIds.join(' ')} }}\n`));
   } else {
+    uniqueIds.sort((a, b) => a.localeCompare(b));
     writeFileSync(filePath, `{{! template-lint-disable ${uniqueIds.join(' ')} }}\n${file}`);
   }
 }
