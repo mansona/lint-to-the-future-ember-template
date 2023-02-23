@@ -21,7 +21,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "fixturify": "^2.1.1",
     "mocha": "^10.0.0",
-    "release-it": "^14.4.1",
+    "release-it": "^15.6.0",
     "tmp": "^0.0.33"
   },
   "peerDependencies": {
