@@ -1,3 +1,7 @@
+v1.1.1 / 2023-02-23
+==================
+* Add license #18 from @RobbieTheWagner
+
 v1.1.0 / 2022-05-31
 ==================
 * Add lib to discovery folders #14 from @locks
