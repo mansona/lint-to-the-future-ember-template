@@ -1,3 +1,9 @@
+v1.2.0 / 2023-04-16
+==================
+* Add sorting for stability #15 from @wagenet
+* Respect .gitignore #17 from @wagenet
+* Accept ember-template-lint (peer dependency) in v5 #19 from @tniezurawski
+
 v1.1.1 / 2023-02-23
 ==================
 * Add license #18 from @RobbieTheWagner
