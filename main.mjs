@@ -3,6 +3,28 @@ import importCwd from 'import-cwd';
 import walkSync from 'walk-sync';
 import { join } from 'path';
 
+function getFiles(cwd) {
+  let ignoreFile;
+
+  try {
+    ignoreFile = readFileSync(join(cwd, '.gitignore'), 'utf8')
+      .split('\n')
+      .filter((line) => line.length)
+      .filter((line) => !line.startsWith('#'))
+      // walkSync can't handle these
+      .filter((line) => !line.startsWith('!'))
+      .map((line) => line.replace(/^\//, ''))
+      .map((line) => line.replace(/\/$/, '/*'));
+  } catch (e) {
+    // noop
+  }
+
+  return walkSync(cwd, {
+    globs: ['**/*.hbs'],
+    ignore: ignoreFile || ['**/node_modules/*'],
+  });
+}
+
 function ignoreError(errorInput, file, filePath) {
   let errors = errorInput.results ?? errorInput;
 
@@ -35,7 +57,7 @@ function ignoreError(errorInput, file, filePath) {
 
 // only passing the cwd in for testing purposes
 export async function ignoreAll(cwd = process.cwd()) {
-  const files = walkSync(cwd, { globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs', 'lib/**/*.hbs'] });
+  const files = getFiles(cwd);
 
   let TemplateLinter;
 
@@ -74,9 +96,7 @@ export function list(directory) {
   // directory
   const cwd = directory || process.cwd();
 
-  const files = walkSync(cwd, {
-    globs: ['app/**/*.hbs', 'addon/**/*.hbs', 'tests/**/*.hbs', 'lib/**/*.hbs'],
-  });
+  const files = getFiles(cwd);
 
   const output = {};
 
