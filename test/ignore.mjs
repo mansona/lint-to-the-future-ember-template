@@ -11,6 +11,8 @@ describe('ignore function', function () {
       app: {
         'log.hbs': '{{log "hello"}}',
         'existing.hbs': '{{! template-lint-disable no-debugger }}\n{{log "hello"}}{{debugger}}',
+        'existing-wrong-order-dont-change.hbs': '{{! template-lint-disable no-log no-debugger }}\n{{log "hello"}}{{debugger}}',
+        'existing-wrong-order-do-change.hbs': '{{! template-lint-disable no-log no-debugger }}\n{{log "hello"}}{{debugger}} <a href="http://google.com" target="_blank">Go google it</a>',
         'ignore-me.hbs': '{{log "ignored"}}',
       },
     });
@@ -23,6 +25,8 @@ describe('ignore function', function () {
       app: {
         'log.hbs': '{{! template-lint-disable no-log }}\n{{log "hello"}}',
         'existing.hbs': '{{! template-lint-disable no-debugger no-log }}\n{{log "hello"}}{{debugger}}',
+        'existing-wrong-order-dont-change.hbs': '{{! template-lint-disable no-log no-debugger }}\n{{log "hello"}}{{debugger}}',
+        'existing-wrong-order-do-change.hbs': '{{! template-lint-disable link-rel-noopener no-debugger no-log }}\n{{log "hello"}}{{debugger}} <a href="http://google.com" target="_blank">Go google it</a>',
         'ignore-me.hbs': '{{log "ignored"}}',
       },
     });
