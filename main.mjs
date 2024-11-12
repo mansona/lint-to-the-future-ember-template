@@ -1,5 +1,4 @@
 import { readFileSync, writeFileSync } from 'fs';
-import importCwd from 'import-cwd';
 import walkSync from 'walk-sync';
 import { join } from 'path';
 
@@ -18,7 +17,7 @@ function getFiles(cwd) {
       .filter((line) => !line.startsWith('!'))
       .map((line) => line.replace(/^\//, ''))
       .map((line) => line.replace(/\/$/, '/*'));
-  } catch (e) {
+  } catch {
     // noop
   }
 
