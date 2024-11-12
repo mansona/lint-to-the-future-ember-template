@@ -1,5 +1,27 @@
 # Changelog
 
+## Release (2024-11-12)
+
+lint-to-the-future-ember-template 2.0.0 (major)
+
+#### :boom: Breaking Change
+* `lint-to-the-future-ember-template`
+  * [#24](https://github.com/mansona/lint-to-the-future-ember-template/pull/24) drop support for node 14 ([@mansona](https://github.com/mansona))
+
+#### :rocket: Enhancement
+* `lint-to-the-future-ember-template`
+  * [#29](https://github.com/mansona/lint-to-the-future-ember-template/pull/29) add ability to pass --filter to ignore ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `lint-to-the-future-ember-template`
+  * [#27](https://github.com/mansona/lint-to-the-future-ember-template/pull/27) Refactor ignoreAll function into its own file ([@mansona](https://github.com/mansona))
+  * [#28](https://github.com/mansona/lint-to-the-future-ember-template/pull/28) update eslint ([@mansona](https://github.com/mansona))
+  * [#25](https://github.com/mansona/lint-to-the-future-ember-template/pull/25) move to release-plan ([@mansona](https://github.com/mansona))
+  * [#23](https://github.com/mansona/lint-to-the-future-ember-template/pull/23) swap to pnpm ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 v1.2.0 / 2023-04-16
 ==================
 * Add sorting for stability #15 from @wagenet

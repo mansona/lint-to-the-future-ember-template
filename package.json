@@ -1,6 +1,6 @@
 {
   "name": "lint-to-the-future-ember-template",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "repository": "https://github.com/mansona/lint-to-the-future-ember-template",
   "license": "MIT",
   "scripts": {
