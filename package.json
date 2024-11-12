@@ -19,6 +19,7 @@
     "chai": "^4.3.4",
     "eslint": "^8.15.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.31.0",
     "fixturify": "^2.1.1",
     "mocha": "^10.0.0",
     "release-it": "^15.6.0",
@@ -30,5 +31,6 @@
   "engines": {
     "node": "10.* || >= 12.*"
   },
-  "@authmaker/generator-express:version": "3.2.6"
+  "@authmaker/generator-express:version": "3.2.6",
+  "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81"
 }
