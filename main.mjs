@@ -3,6 +3,9 @@ import importCwd from 'import-cwd';
 import walkSync from 'walk-sync';
 import { join } from 'path';
 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+
 function getFiles(cwd) {
   let ignoreFile;
 
@@ -64,7 +67,7 @@ export async function ignoreAll(cwd = process.cwd()) {
   let TemplateLinter;
 
   try {
-    TemplateLinter = await import(join(process.cwd(), 'node_modules', 'ember-template-lint', 'lib', 'index.js'));
+    TemplateLinter = await import(require.resolve('ember-template-lint', { paths: [cwd]}));
   } catch (err) {
     console.error({err});
   }
