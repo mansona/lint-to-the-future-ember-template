@@ -1,0 +1,25 @@
+{
+  "solution": {
+    "lint-to-the-future-ember-template": {
+      "impact": "major",
+      "oldVersion": "1.2.0",
+      "newVersion": "2.0.0",
+      "constraints": [
+        {
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
+        },
+        {
+          "impact": "minor",
+          "reason": "Appears in changelog section :rocket: Enhancement"
+        },
+        {
+          "impact": "patch",
+          "reason": "Appears in changelog section :house: Internal"
+        }
+      ],
+      "pkgJSONPath": "./package.json"
+    }
+  },
+  "description": "## Release (2024-11-12)\n\nlint-to-the-future-ember-template 2.0.0 (major)\n\n#### :boom: Breaking Change\n* `lint-to-the-future-ember-template`\n  * [#24](https://github.com/mansona/lint-to-the-future-ember-template/pull/24) drop support for node 14 ([@mansona](https://github.com/mansona))\n\n#### :rocket: Enhancement\n* `lint-to-the-future-ember-template`\n  * [#29](https://github.com/mansona/lint-to-the-future-ember-template/pull/29) add ability to pass --filter to ignore ([@mansona](https://github.com/mansona))\n\n#### :house: Internal\n* `lint-to-the-future-ember-template`\n  * [#27](https://github.com/mansona/lint-to-the-future-ember-template/pull/27) Refactor ignoreAll function into its own file ([@mansona](https://github.com/mansona))\n  * [#28](https://github.com/mansona/lint-to-the-future-ember-template/pull/28) update eslint ([@mansona](https://github.com/mansona))\n  * [#25](https://github.com/mansona/lint-to-the-future-ember-template/pull/25) move to release-plan ([@mansona](https://github.com/mansona))\n  * [#23](https://github.com/mansona/lint-to-the-future-ember-template/pull/23) swap to pnpm ([@mansona](https://github.com/mansona))\n\n#### Committers: 1\n- Chris Manson ([@mansona](https://github.com/mansona))\n"
+}
