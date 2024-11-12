@@ -1,3 +1,5 @@
+# Changelog
+
 v1.2.0 / 2023-04-16
 ==================
 * Add sorting for stability #15 from @wagenet
