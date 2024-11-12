@@ -4,6 +4,8 @@ import getFiles from './lib/get-files.mjs';
 
 export { default as ignoreAll } from './lib/ignore.mjs';
 
+export const capabilities = ['filter-ignore'];
+
 export function list(directory) {
   // this is only used for internal testing, lint-to-the-future never passes a
   // directory
