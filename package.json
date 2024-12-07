@@ -27,9 +27,9 @@
   "peerDependencies": {
     "ember-template-lint": "^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
   },
-  "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81",
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
   "engines": {
-    "node": "10.* || >= 12.*"
+    "node": "18.* || 20.* || >= 22.*"
   },
   "@authmaker/generator-express:version": "3.2.6"
 }
