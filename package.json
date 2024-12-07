@@ -3,13 +3,14 @@
   "version": "2.0.0",
   "repository": "https://github.com/mansona/lint-to-the-future-ember-template",
   "license": "MIT",
+  "main": "main.mjs",
+  "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha --recursive --reporter spec test/**/*.mjs",
+    "test": "mocha --recursive --reporter spec test",
     "test-watch": "npm run test -- -w --reporter min"
   },
   "dependencies": {
-    "esm": "^3.2.25",
     "walk-sync": "^2.2.0"
   },
   "devDependencies": {
