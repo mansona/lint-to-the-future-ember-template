@@ -37,6 +37,8 @@ describe('list function', function () {
         'addon/templates/components/notification-thingy.hbs',
         'addon/templates/components/notification-yoke.hbs',
         'app/templates/error.hbs',
+        'app/templates/fancy.gjs',
+        'app/templates/not-so-fancy.gts',
       ],
       'no-unbalanced-curlies': ['tests/dummy/app/templates/application.hbs'],
       'require-button-type': ['tests/dummy/app/templates/application.hbs'],
