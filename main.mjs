@@ -1,8 +1,8 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import getFiles from './lib/get-files.mjs';
+import getFiles from './lib/get-files.js';
 
-export { default as ignoreAll } from './lib/ignore.mjs';
+export { default as ignoreAll } from './lib/ignore.js';
 
 export const capabilities = ['filter-ignore'];
 

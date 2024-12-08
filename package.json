@@ -3,13 +3,14 @@
   "version": "2.0.0",
   "repository": "https://github.com/mansona/lint-to-the-future-ember-template",
   "license": "MIT",
+  "main": "main.mjs",
+  "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha --recursive --reporter spec test/**/*.mjs",
+    "test": "mocha --recursive --reporter spec test",
     "test-watch": "npm run test -- -w --reporter min"
   },
   "dependencies": {
-    "esm": "^3.2.25",
     "walk-sync": "^2.2.0"
   },
   "devDependencies": {
@@ -19,8 +20,10 @@
     "eslint": "^9.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.31.0",
+    "execa": "^9.5.1",
     "fixturify-project": "^7.1.3",
     "globals": "^15.12.0",
+    "lint-to-the-future": "^2.5.1",
     "mocha": "^10.0.0",
     "release-plan": "^0.9.0"
   },
