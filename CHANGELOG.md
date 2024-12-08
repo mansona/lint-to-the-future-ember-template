@@ -1,5 +1,28 @@
 # Changelog
 
+## Release (2024-12-08)
+
+lint-to-the-future-ember-template 3.0.0 (major)
+
+#### :boom: Breaking Change
+* `lint-to-the-future-ember-template`
+  * [#35](https://github.com/mansona/lint-to-the-future-ember-template/pull/35) move to esm only with type:module ([@mansona](https://github.com/mansona))
+  * [#33](https://github.com/mansona/lint-to-the-future-ember-template/pull/33) drop support for node 16 ([@mansona](https://github.com/mansona))
+
+#### :rocket: Enhancement
+* `lint-to-the-future-ember-template`
+  * [#32](https://github.com/mansona/lint-to-the-future-ember-template/pull/32) add support to list ignores from gjs and gts files ([@mansona](https://github.com/mansona))
+
+#### :house: Internal
+* `lint-to-the-future-ember-template`
+  * [#39](https://github.com/mansona/lint-to-the-future-ember-template/pull/39) reinstate support for older ember-template-lint versions ([@mansona](https://github.com/mansona))
+  * [#38](https://github.com/mansona/lint-to-the-future-ember-template/pull/38) verify that ignore respects the ignores specified in .template-lintrc.js ([@mansona](https://github.com/mansona))
+  * [#37](https://github.com/mansona/lint-to-the-future-ember-template/pull/37) convert to vitest ([@mansona](https://github.com/mansona))
+  * [#36](https://github.com/mansona/lint-to-the-future-ember-template/pull/36) drop support for ember-template-lint < 5 ([@mansona](https://github.com/mansona))
+
+#### Committers: 1
+- Chris Manson ([@mansona](https://github.com/mansona))
+
 ## Release (2024-11-12)
 
 lint-to-the-future-ember-template 2.0.0 (major)
