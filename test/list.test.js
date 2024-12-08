@@ -1,5 +1,6 @@
-import { expect } from 'chai';
 import { list } from '../main.mjs';
+
+import { expect, describe, it } from 'vitest';
 
 describe('list function', function () {
   it('should output object with rules and files', function () {

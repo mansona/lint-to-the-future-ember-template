@@ -1,5 +1,5 @@
-import { expect } from 'chai';
 import { Project } from 'fixturify-project';
+import { expect, describe, beforeEach, it } from 'vitest';
 
 import { ignoreAll } from '../main.mjs';
 
