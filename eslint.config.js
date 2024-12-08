@@ -11,6 +11,6 @@ export default [
 
       globals: globals.mocha,
     },
-    files: ['test/*.mjs']
+    files: ['test/*.js']
   }
 ];
