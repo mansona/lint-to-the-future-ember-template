@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+
 import { Project } from 'fixturify-project';
 import { execa } from 'execa';
+
+import { expect, describe, beforeEach, it } from 'vitest';
 
 describe('end-to-end test', function () {
   let project;
