@@ -39,9 +39,14 @@ export function list(directory) {
     let ignoreRules;
 
     if (filePath.endsWith('.gjs') || filePath.endsWith('.gts')) {
+      try {
       let templates = p.parse(file);
 
       ignoreRules = templates.map(template => getIgnores(template.contents.trim())).flat();
+      } catch (_) {
+        console.warn("Unable to parse file", filePath);
+        ignoreRules = [];
+      }
     } else {
       ignoreRules = getIgnores(file);
     }
