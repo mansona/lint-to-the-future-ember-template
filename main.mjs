@@ -24,12 +24,12 @@ function getIgnores(template) {
   return ignoreRules;
 }
 
-export function list(directory) {
+export async function list(directory) {
   // this is only used for internal testing, lint-to-the-future never passes a
   // directory
   const cwd = directory || process.cwd();
 
-  const files = getFiles(cwd);
+  const files = await getFiles(cwd);
 
   const output = {};
 
