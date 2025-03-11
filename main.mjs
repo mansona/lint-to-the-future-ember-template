@@ -2,7 +2,10 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import getFiles from './lib/get-files.js';
 import { Preprocessor } from 'content-tag';
+import debugBase from 'debug';
+
 let p = new Preprocessor();
+const debug = debugBase('lint-to-the-future-ember-template');
 
 export { default as ignoreAll } from './lib/ignore.js';
 
@@ -43,8 +46,9 @@ export async function list(directory) {
       let templates = p.parse(file);
 
       ignoreRules = templates.map(template => getIgnores(template.contents.trim())).flat();
-      } catch (_) {
+      } catch (error) {
         console.warn("Unable to parse file", filePath);
+        debug(error);
         ignoreRules = [];
       }
     } else {
