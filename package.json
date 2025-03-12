@@ -3,8 +3,8 @@
   "version": "3.0.0",
   "repository": "https://github.com/mansona/lint-to-the-future-ember-template",
   "license": "MIT",
-  "main": "main.mjs",
   "type": "module",
+  "main": "main.mjs",
   "scripts": {
     "lint": "eslint .",
     "test": "vitest"
@@ -24,7 +24,7 @@
     "fixturify-project": "^7.1.3",
     "globals": "^15.12.0",
     "lint-to-the-future": "^2.5.1",
-    "release-plan": "^0.9.0",
+    "release-plan": "^0.13.1",
     "vitest": "^2.1.8"
   },
   "peerDependencies": {
