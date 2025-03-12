@@ -17,9 +17,6 @@ importers:
       globby:
         specifier: ^14.1.0
         version: 14.1.0
-      walk-sync:
-        specifier: ^2.2.0
-        version: 2.2.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.14.0
@@ -3103,10 +3100,6 @@ packages:
 
   walk-sync@1.1.4:
     resolution: {integrity: sha512-nowc9thB/Jg0KW4TgxoRjLLYRPvl3DB/98S89r4ZcJqq2B0alNcKDh6pzLkBSkPMzRSMsJghJHQi79qw0YWEkA==}
-
-  walk-sync@2.2.0:
-    resolution: {integrity: sha512-IC8sL7aB4/ZgFcGI2T1LczZeFWZ06b3zoHH7jBPyHxOtIIz1jppWHjjEXkOFvFojBVAK9pV7g47xOZ4LW3QLfg==}
-    engines: {node: 8.* || >= 10.*}
 
   walk-sync@3.0.0:
     resolution: {integrity: sha512-41TvKmDGVpm2iuH7o+DAOt06yyu/cSHpX3uzAwetzASvlNtVddgIjXIb2DfB/Wa20B1Jo86+1Dv1CraSU7hWdw==}
@@ -6696,13 +6689,6 @@ snapshots:
       '@types/minimatch': 3.0.5
       ensure-posix-path: 1.1.1
       matcher-collection: 1.1.2
-
-  walk-sync@2.2.0:
-    dependencies:
-      '@types/minimatch': 3.0.5
-      ensure-posix-path: 1.1.1
-      matcher-collection: 2.0.1
-      minimatch: 3.1.2
 
   walk-sync@3.0.0:
     dependencies:

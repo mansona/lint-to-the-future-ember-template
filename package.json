@@ -12,8 +12,7 @@
   "dependencies": {
     "content-tag": "^3.0.0",
     "debug": "^4.4.0",
-    "globby": "^14.1.0",
-    "walk-sync": "^2.2.0"
+    "globby": "^14.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
