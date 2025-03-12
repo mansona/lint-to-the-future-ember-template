@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2025-03-12)
+
+lint-to-the-future-ember-template 3.1.0 (minor)
+
+#### :rocket: Enhancement
+* `lint-to-the-future-ember-template`
+  * [#40](https://github.com/mansona/lint-to-the-future-ember-template/pull/40) Improve file ignoring, gracefully handle unparseable files ([@wagenet](https://github.com/wagenet))
+
+#### :house: Internal
+* `lint-to-the-future-ember-template`
+  * [#42](https://github.com/mansona/lint-to-the-future-ember-template/pull/42) update release-plan ([@mansona](https://github.com/mansona))
+
+#### Committers: 2
+- Chris Manson ([@mansona](https://github.com/mansona))
+- Peter Wagenet ([@wagenet](https://github.com/wagenet))
+
 ## Release (2024-12-08)
 
 lint-to-the-future-ember-template 3.0.0 (major)
