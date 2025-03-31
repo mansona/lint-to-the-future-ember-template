@@ -66,4 +66,46 @@ describe('ignore function', function () {
       'ignore-me.hbs': '{{log "ignored"}}',
     });
   })
+
+  it('should add ignore declarations at the top of template blocks', async function() {
+    project = new Project({
+      files: {
+        '.template-lintrc.js': `module.exports = {
+          extends: 'recommended',
+          ignore: ['app/ignore-me'],
+        };`,
+        app: {
+          'template.gjs': `import RouteTemplate from 'ember-route-template';
+
+export default RouteTemplate(<template>
+  {{log "hello"}}
+</template>);`,
+        },
+        'package.json': `{
+          "devDependencies": {
+            "ember-template-lint": "*"
+          }
+        }`,
+        'index.js': null,
+      },
+    });
+
+    project.linkDevDependency('lint-to-the-future', { baseDir: process.cwd() });
+    project.linkDevDependency('lint-to-the-future-ember-template', { baseDir: process.cwd(), resolveName: '.' });
+    project.linkDevDependency('ember-template-lint', { baseDir: process.cwd() });
+    await project.write();
+
+    await execa({
+      cwd: project.baseDir,
+    })`lttf ignore`;
+
+    project.readSync(project.baseDir);
+
+    expect(project.files.app['template.gjs']).to.equal(`import RouteTemplate from 'ember-route-template';
+
+export default RouteTemplate(<template>
+  {{! template-lint-disable no-log }}
+  {{log "hello"}}
+</template>);`);
+  });
 });
