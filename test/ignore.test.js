@@ -108,4 +108,71 @@ export default RouteTemplate(<template>
   {{log "hello"}}
 </template>);`);
   });
+
+  it('should add ignore declarations at the top of multiple template blocks', async function() {
+    project = new Project({
+      files: {
+        '.template-lintrc.js': `module.exports = {
+          extends: 'recommended',
+          ignore: ['app/ignore-me'],
+        };`,
+        app: {
+          'multi-template.gjs': `import Component from '@glimmer/component';
+
+const FirstTemplate = <template>
+  {{log "first template"}}
+</template>;
+
+const SecondTemplate = <template>
+  Inside Second Template
+</template>;
+
+export default class MyComponent extends Component {
+  <template>
+    <FirstTemplate />
+    <SecondTemplate />
+    {{log "MyComponent template"}}
+  </template>
+}`,
+        },
+        'package.json': `{
+          "devDependencies": {
+            "ember-template-lint": "*"
+          }
+        }`,
+        'index.js': null,
+      },
+    });
+
+    project.linkDevDependency('lint-to-the-future', { baseDir: process.cwd() });
+    project.linkDevDependency('lint-to-the-future-ember-template', { baseDir: process.cwd(), resolveName: '.' });
+    project.linkDevDependency('ember-template-lint', { baseDir: process.cwd() });
+    await project.write();
+
+    await execa({
+      cwd: project.baseDir,
+    })`lttf ignore`;
+
+    project.readSync(project.baseDir);
+
+    expect(project.files.app['multi-template.gjs']).to.equal(`import Component from '@glimmer/component';
+
+const FirstTemplate = <template>
+  {{! template-lint-disable no-log }}
+  {{log "first template"}}
+</template>;
+
+const SecondTemplate = <template>
+  Inside Second Template
+</template>;
+
+export default class MyComponent extends Component {
+  <template>
+    {{! template-lint-disable no-log }}
+    <FirstTemplate />
+    <SecondTemplate />
+    {{log "MyComponent template"}}
+  </template>
+}`);
+  });
 });
