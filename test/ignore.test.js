@@ -175,4 +175,57 @@ export default class MyComponent extends Component {
   </template>
 }`);
   });
+
+  it('should not add ignore declarations for Logger components but should for regular elements', async function() {
+    project = new Project({
+      files: {
+        '.template-lintrc.js': `module.exports = {
+          extends: 'recommended',
+        };`,
+        app: {
+          'logger-test.gjs': `export const Y = <template>
+  <Logger as |log|>
+    {{log "foo"}}
+  </Logger>
+</template>;
+
+export const X = <template>
+  <div>
+    {{log "foo"}}
+  </div>
+</template>;`,
+        },
+        'package.json': `{
+          "devDependencies": {
+            "ember-template-lint": "*"
+          }
+        }`,
+        'index.js': null,
+      },
+    });
+
+    project.linkDevDependency('lint-to-the-future', { baseDir: process.cwd() });
+    project.linkDevDependency('lint-to-the-future-ember-template', { baseDir: process.cwd(), resolveName: '.' });
+    project.linkDevDependency('ember-template-lint', { baseDir: process.cwd() });
+    await project.write();
+
+    await execa({
+      cwd: project.baseDir,
+    })`lttf ignore`;
+
+    project.readSync(project.baseDir);
+
+    expect(project.files.app['logger-test.gjs']).to.equal(`export const Y = <template>
+  <Logger as |log|>
+    {{log "foo"}}
+  </Logger>
+</template>;
+
+export const X = <template>
+  {{! template-lint-disable no-log }}
+  <div>
+    {{log "foo"}}
+  </div>
+</template>;`);
+  });
 });
