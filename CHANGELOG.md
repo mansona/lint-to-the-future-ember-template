@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-04-01)
+
+lint-to-the-future-ember-template 4.0.0 (major)
+
+#### :boom: Breaking Change
+* `lint-to-the-future-ember-template`
+  * [#45](https://github.com/mansona/lint-to-the-future-ember-template/pull/45) Drop support for ember-template-lint @ 2, and support for ember-template-lint @ 7 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))
+
+#### Committers: 1
+- [@NullVoxPopuli](https://github.com/NullVoxPopuli)
+
 ## Release (2025-03-12)
 
 lint-to-the-future-ember-template 3.1.0 (minor)
