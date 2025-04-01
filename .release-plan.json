@@ -1,21 +1,17 @@
 {
   "solution": {
     "lint-to-the-future-ember-template": {
-      "impact": "minor",
-      "oldVersion": "3.0.0",
-      "newVersion": "3.1.0",
+      "impact": "major",
+      "oldVersion": "3.1.0",
+      "newVersion": "4.0.0",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
-          "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "impact": "major",
+          "reason": "Appears in changelog section :boom: Breaking Change"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2025-03-12)\n\nlint-to-the-future-ember-template 3.1.0 (minor)\n\n#### :rocket: Enhancement\n* `lint-to-the-future-ember-template`\n  * [#40](https://github.com/mansona/lint-to-the-future-ember-template/pull/40) Improve file ignoring, gracefully handle unparseable files ([@wagenet](https://github.com/wagenet))\n\n#### :house: Internal\n* `lint-to-the-future-ember-template`\n  * [#42](https://github.com/mansona/lint-to-the-future-ember-template/pull/42) update release-plan ([@mansona](https://github.com/mansona))\n\n#### Committers: 2\n- Chris Manson ([@mansona](https://github.com/mansona))\n- Peter Wagenet ([@wagenet](https://github.com/wagenet))\n"
+  "description": "## Release (2025-04-01)\n\nlint-to-the-future-ember-template 4.0.0 (major)\n\n#### :boom: Breaking Change\n* `lint-to-the-future-ember-template`\n  * [#45](https://github.com/mansona/lint-to-the-future-ember-template/pull/45) Drop support for ember-template-lint @ 2, and support for ember-template-lint @ 7 ([@NullVoxPopuli](https://github.com/NullVoxPopuli))\n\n#### Committers: 1\n- [@NullVoxPopuli](https://github.com/NullVoxPopuli)\n"
 }
