@@ -66,4 +66,166 @@ describe('ignore function', function () {
       'ignore-me.hbs': '{{log "ignored"}}',
     });
   })
+
+  it('should add ignore declarations at the top of template blocks', async function() {
+    project = new Project({
+      files: {
+        '.template-lintrc.js': `module.exports = {
+          extends: 'recommended',
+          ignore: ['app/ignore-me'],
+        };`,
+        app: {
+          'template.gjs': `import RouteTemplate from 'ember-route-template';
+
+export default RouteTemplate(<template>
+  {{log "hello"}}
+</template>);`,
+        },
+        'package.json': `{
+          "devDependencies": {
+            "ember-template-lint": "*"
+          }
+        }`,
+        'index.js': null,
+      },
+    });
+
+    project.linkDevDependency('lint-to-the-future', { baseDir: process.cwd() });
+    project.linkDevDependency('lint-to-the-future-ember-template', { baseDir: process.cwd(), resolveName: '.' });
+    project.linkDevDependency('ember-template-lint', { baseDir: process.cwd() });
+    await project.write();
+
+    await execa({
+      cwd: project.baseDir,
+    })`lttf ignore`;
+
+    project.readSync(project.baseDir);
+
+    expect(project.files.app['template.gjs']).to.equal(`import RouteTemplate from 'ember-route-template';
+
+export default RouteTemplate(<template>
+  {{! template-lint-disable no-log }}
+  {{log "hello"}}
+</template>);`);
+  });
+
+  it('should add ignore declarations at the top of multiple template blocks', async function() {
+    project = new Project({
+      files: {
+        '.template-lintrc.js': `module.exports = {
+          extends: 'recommended',
+          ignore: ['app/ignore-me'],
+        };`,
+        app: {
+          'multi-template.gjs': `import Component from '@glimmer/component';
+
+const FirstTemplate = <template>
+  {{log "first template"}}
+</template>;
+
+const SecondTemplate = <template>
+  Inside Second Template
+</template>;
+
+export default class MyComponent extends Component {
+  <template>
+    <FirstTemplate />
+    <SecondTemplate />
+    {{log "MyComponent template"}}
+  </template>
+}`,
+        },
+        'package.json': `{
+          "devDependencies": {
+            "ember-template-lint": "*"
+          }
+        }`,
+        'index.js': null,
+      },
+    });
+
+    project.linkDevDependency('lint-to-the-future', { baseDir: process.cwd() });
+    project.linkDevDependency('lint-to-the-future-ember-template', { baseDir: process.cwd(), resolveName: '.' });
+    project.linkDevDependency('ember-template-lint', { baseDir: process.cwd() });
+    await project.write();
+
+    await execa({
+      cwd: project.baseDir,
+    })`lttf ignore`;
+
+    project.readSync(project.baseDir);
+
+    expect(project.files.app['multi-template.gjs']).to.equal(`import Component from '@glimmer/component';
+
+const FirstTemplate = <template>
+  {{! template-lint-disable no-log }}
+  {{log "first template"}}
+</template>;
+
+const SecondTemplate = <template>
+  Inside Second Template
+</template>;
+
+export default class MyComponent extends Component {
+  <template>
+    {{! template-lint-disable no-log }}
+    <FirstTemplate />
+    <SecondTemplate />
+    {{log "MyComponent template"}}
+  </template>
+}`);
+  });
+
+  it('should not add ignore declarations for Logger components but should for regular elements', async function() {
+    project = new Project({
+      files: {
+        '.template-lintrc.js': `module.exports = {
+          extends: 'recommended',
+        };`,
+        app: {
+          'logger-test.gjs': `export const Y = <template>
+  <Logger as |log|>
+    {{log "foo"}}
+  </Logger>
+</template>;
+
+export const X = <template>
+  <div>
+    {{log "foo"}}
+  </div>
+</template>;`,
+        },
+        'package.json': `{
+          "devDependencies": {
+            "ember-template-lint": "*"
+          }
+        }`,
+        'index.js': null,
+      },
+    });
+
+    project.linkDevDependency('lint-to-the-future', { baseDir: process.cwd() });
+    project.linkDevDependency('lint-to-the-future-ember-template', { baseDir: process.cwd(), resolveName: '.' });
+    project.linkDevDependency('ember-template-lint', { baseDir: process.cwd() });
+    await project.write();
+
+    await execa({
+      cwd: project.baseDir,
+    })`lttf ignore`;
+
+    project.readSync(project.baseDir);
+
+    expect(project.files.app['logger-test.gjs']).to.equal(`export const Y = <template>
+  <Logger as |log|>
+    {{log "foo"}}
+  </Logger>
+</template>;
+
+export const X = <template>
+  {{! template-lint-disable no-log }}
+  <div>
+    {{log "foo"}}
+  </div>
+</template>;`);
+  });
 });
