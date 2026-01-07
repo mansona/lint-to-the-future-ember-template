@@ -17,9 +17,10 @@ function getIgnores(template) {
     return [];
   }
 
-  const matched = firstLine.match(/template-lint-disable(.*)(--)?\}\}/);
+  // check the first line first, if that doesn't match, continue the check on the following lines
+  const matched = firstLine.match(/template-lint-disable(.*)(--)?\}\}/) || template.match(/template-lint-disable(.*?)(--)?\}\}/s);
 
-  const ignoreRules = matched[1].split(' ')
+  const ignoreRules = matched[1].replace('\n', '').split(' ')
     .map(item => item.trim())
     // remove trailing -- from when there is no gaps in comments
     .map(item => item.replace(/--$/, ''))
@@ -43,9 +44,9 @@ export async function list(directory) {
 
     if (filePath.endsWith('.gjs') || filePath.endsWith('.gts')) {
       try {
-      let templates = p.parse(file);
+        let templates = p.parse(file);
 
-      ignoreRules = templates.map(template => getIgnores(template.contents.trim())).flat();
+        ignoreRules = templates.map(template => getIgnores(template.contents.trim())).flat();
       } catch (error) {
         console.warn("Unable to parse file", filePath);
         debug(error);
