@@ -1,5 +1,23 @@
 # Changelog
 
+## Release (2026-01-26)
+
+lint-to-the-future-ember-template 4.1.0 (minor)
+
+#### :rocket: Enhancement
+* `lint-to-the-future-ember-template`
+  * [#48](https://github.com/mansona/lint-to-the-future-ember-template/pull/48) allow disable to be over multiple lines ([@beerinho](https://github.com/beerinho))
+  * [#44](https://github.com/mansona/lint-to-the-future-ember-template/pull/44) Insert ignores at the top of template tags ([@wagenet](https://github.com/wagenet))
+
+#### :house: Internal
+* `lint-to-the-future-ember-template`
+  * [#50](https://github.com/mansona/lint-to-the-future-ember-template/pull/50) [refactor] extract a common getExistingIgnores function ([@mansona](https://github.com/mansona))
+
+#### Committers: 3
+- Chris Manson ([@mansona](https://github.com/mansona))
+- Daniel Beer ([@beerinho](https://github.com/beerinho))
+- Peter Wagenet ([@wagenet](https://github.com/wagenet))
+
 ## Release (2026-01-06)
 
 lint-to-the-future-ember-template 4.0.0 (major)
